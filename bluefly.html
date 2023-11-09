@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bluefly</title>
+	</head>
+    <style>
+      #heading{
+        display:flex;
+        height:80px;
+        width:100%;
+        margin:auto;
+         /* border:2px solid black;  */
+      }
+      #heading > div{
+        height:100%;
+        width:20%;
+         /* border:2px solid black;  */
+        margin:auto;
+      }
+      #logo{
+    flex-grow:1;
+      }
+      #brand{
+        display:block;
+        width:20%;
+        margin-left: 50%;
+        margin-right: 20%;
+        margin-top: 2%;
+        /* margin-bottom: 50%; */
+      }
+      @media only screen and (max-width:768px){
+        #brand{
+          display:block;
+          width:60%;
+          margin-left: 10%;
+          margin-right: 10px;
+        }
+      }
+      #header{
+        display:flex;
+      }
+      #header > button{
+        height:100%;
+        width:25%;
+        background-color: white;
+        border:transparent;
+      }
+      #header > button >img{
+      height:50%;
+      width:100%;
+      object-fit: cover;     
+     }
+     @media only screen and (min-width:768px){
+      .openbtn{
+        display:none;
+      }
+      .closebtn{
+        display:none;
+      }
+     }
+     @media only screen and (max-width:768px){
+      #header > button{
+        height:100%;
+        width:60%;
+        background-color: white;
+        border:transparent;
+     }
+     #header > button >img{
+      height:50%;
+      width:100%;
+      object-fit: cover; }}
+      #content{
+        display:flex;
+        justify-content:center;
+        height:40px;
+        width:100%;
+        margin:auto;
+        /* border:2px solid black;  */
+        gap:15px; 
+      }
+      #content > div{
+        height:100%;
+        width:auto;
+         /* border:2px solid black;  */
+      
+      }
+      #content > div:nth-child(9){
+        color:red;
+      }
+      /* .openbtn{
+        display: none; */
+      /* } */
+      /* .closebtn{
+        display: none;
+      } */
+      @media only screen and (max-width:768px){
+        #content{
+          height:800px;
+          width:0;
+          position:fixed;
+          z-index: 1;
+          top:0;
+          left:0;
+          background-color: #111;
+          overflow-x: hidden;
+          padding-top: 60px;
+          transition:0.5s;
+        }
+        #content > div{
+          padding:8px 8px 8px 8px;
+          text-decoration: none;
+          font-size: 25px;
+          color:#818181;
+          display: contents;
+          transition:0.3s;
+        }
+        .openbtn{
+          font-size:20px;
+          cursor:pointer;
+          background-color: #111;
+          color:white;
+          border: none;
+        }
+        .closebtn{
+          position:absolute;
+          top:0;
+          right:25px;
+          font-size: 36px;
+           margin-left: 50px;        
+          }
+      }
+      #intro{
+        width:100%;
+        color: white;
+        align-items: center;
+        /* border:2px solid black; */
+        background-color: black;
+      }
+      #intro > div{
+        gap:0px;
+      }
+      #intro > div:nth-child(1){
+         background-color: black; 
+        font-weight: lighter;
+        text-align: center;
+      }
+      .main{
+        height:500px;
+        width:100%;
+        margin:auto;
+        display:flex;
+         /* border:2px solid black;   */
+        justify-content: space-between;
+        position: relative;
+      }
+      #prev{
+        position: absolute;
+        width:10%;
+        background-color:transparent;
+        border:transparent;
+        font-size:xx-large; 
+        color:white;
+       object-fit: cover;
+       left:0;
+       top:50%;
+      }
+      #next{
+        position: absolute;
+        width:10%;
+        background-color:transparent;
+        border:transparent;
+        font-size:xx-large; 
+        color:white;
+        object-fit: cover;
+        right:0;
+        top:50%;
+
+      }
+      #centered {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       text-align: center;
+      }
+      #slidetext{
+       font-size: 80px;
+      }
+      #tag{
+       font-size: 30px;
+      }
+      #shop{
+       height:40px;
+       width:150px;
+       background-color: white;
+       border:transparent;
+      }
+      #mainpic{
+        
+        width:100%;
+        height:100%;
+      }
+      @media only screen and (max-width:768px){
+        #slidetext{
+          font-size: 30px;
+        }
+        #tag{
+          font-size: 20px;
+        }
+        #welcome{
+          font-size: 15px;
+        }
+      }
+      .recommends{
+        display:flex;
+        height:500px;
+        width:100%;
+        margin:auto;
+        /* border:2px solid black; */
+      }
+      .recommends > div{
+        height:90%;
+        width:20%;
+        margin:auto;
+        /* border:2px solid black; */
+        text-align: center;
+        gap:20px;
+        
+      }
+      .recommends > div > div{
+        display:flex;
+        justify-content: center;
+        gap:10px;
+        
+      }
+      .recommends > div > img{
+        height:70%; 
+      width:80%;
+      object-fit: cover;  
+      }
+      .recommends > div > img:hover {
+  transform: scale(1.2);
+      }
+      @media only screen and (max-width:768px){
+        .recommends{
+          display:grid;
+          grid-template-columns:repeat(2,1fr);
+          grid-template-rows: repeat(2,1fr);
+          /* border:2px solid black; */
+          gap:10px;
+          height:900px;
+          column-gap: 10px;
+          row-gap: 10px;
+          margin:auto;
+        }
+        .recommends > div{
+          height:90%;
+          width:90%;
+          /* margin:auto; */
+          /* border:2px solid black; */
+          
+        }
+        .recommends > div > img{
+          height:60%;
+          width:80%;
+          object-fit: cover;
+        }
+        .recommends > div:nth-child(5)
+        {
+          display:none;
+        }
+        
+      }
+      #offs{
+        display:flex;
+        justify-content: space-around;
+        height:500px;
+        width:100%;
+        margin:auto;
+         /* border:2px solid black;  */
+      }
+      .trends{
+        position: relative;
+        height:100%;
+        width:30%;
+        margin:auto;
+        /* border:2px solid black;  */
+        text-align: center;
+      }
+      #offs > div > img{
+      
+        height:100%; 
+      width:100%;
+      object-fit: cover; 
+      }
+       .trends > div{
+        position: absolute;    
+        bottom: 0;  
+        background: transparent; 
+        background: transparent;  
+        color: #f1f1f1;  
+  /* width: 100%;   */
+        padding: 20px;
+     
+      }
+      @media only screen and (max-width:768px){
+        #offs{
+        /* justify-content: space-around; */
+        height:900px;
+        width:100%;
+        margin:auto;
+        display:contents;
+        }
+        .trends{
+        position: relative;
+        height:30%;
+        width:100%;
+        margin:auto;
+        /* border:2px solid red;  */
+        text-align: center;
+      }
+      #offs > div > img{
+        height:300px; 
+    width:100%;
+    object-fit: cover; 
+    }
+    .trends > div{
+        position: absolute;    
+        bottom: 0;  
+        background: transparent; 
+        background: transparent;  
+        color: #f1f1f1;  
+  /* width: 100%;   */
+        padding: 20px;
+      }}
+      .category{
+        width: 100%;
+        height: 600px;
+        margin: auto;
+        display:grid;
+        grid-template-columns: repeat(5,1fr);
+        grid-template-rows: repeat(5,1fr);
+        column-gap: 20px;
+        row-gap: 30px;
+        justify-content: space-around;
+        /* border:2px solid black; */
+        align-items: center;
+       
+      }
+      .category > div{
+        height:280px;
+        width:80%;
+        margin:auto;
+        /* border:2px solid black; */
+        text-align: center;
+      }
+      .category > div > img{
+        height:70%; 
+      width:80%;
+      object-fit: cover; 
+      }
+      .category > div > img:hover {
+  transform: scale(1.02);
+      }
+      @media only screen and (max-width:768px){
+        .category{
+        width: 100%;
+        height: 1500px;
+        margin: auto;
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(5,1fr);
+        column-gap: 20px;
+        row-gap: 30px;
+        justify-content: space-around;
+        /* border:2px solid black; */
+        align-items: center;       
+      } 
+      }
+      #view{
+        height:200px;
+        width:20%;
+        margin:auto;
+        /* border:2px solid black; */
+        text-align: center;
+      }
+      #view > button{
+        height:20%;
+        width:auto;
+        background-color:transparent; 
+        border-color:black;
+      }
+      @media only screen and (max-width:768px){
+        #view{
+        height:150px;
+        width:40%;
+        margin:auto;
+        /* border:2px solid black; */
+        text-align: center;
+        }}
+      .viewall{
+        display:flex;
+        height:600px;
+        width:100%;
+        margin:auto;
+        /* border:2px solid black; */
+      }
+      .viewall > div{
+        height:100%;
+        width:25%;
+        margin:auto;
+        /* border:2px solid black; */
+        text-align: center;
+      }
+      .viewall > div > img{
+        height:60%; 
+      width:100%;
+      object-fit: cover; 
+      }
+      @media only screen and (max-width:768px){
+        .viewall{
+          display:contents;
+          height:900px;
+          width:100%;
+          margin:auto;
+          /* border:2px solid black; */
+          padding-top: 20px;
+
+        }
+        .viewall > div{
+        height:200%;
+        width:80%;
+        margin:auto;
+        /* border:2px solid black; */
+        text-align: center;
+        padding-top: 10px;
+      }
+      .viewall > div > img{
+        height:60%; 
+      width:60%;
+      object-fit: cover; 
+      }
+      }
+      .footer{
+        height:600px;
+        width:100%;
+        margin:auto;
+        /* border:2px solid black;  */
+        background-color:lightgray; 
+      }
+      #details{
+        display:flex;
+        height:300px;
+        width:100%;
+        /* margin:auto; */
+        /* border:2px solid black;  */
+        justify-content: flex-start;
+      }
+      #details > div{
+        height:100%;
+        width:20%;
+        /* margin:auto; */
+        /* border:2px solid black;  */
+      }
+      #mydropdown > button{
+        height:30px;
+        width:170px;
+       color:white;
+       background-color: black;
+      }
+      
+      @media only screen and (max-width:768px){
+        .footer{
+          display:contents;
+        height:600px;
+        width:100%;
+        margin:auto;
+        /* border:2px solid black;  */
+        background-color:lightgray; 
+      } 
+      #details{
+        display:grid;
+        /* row-gap:10px; */
+        /* background-color:lightgray;  */
+        /* border:2px solid black;  */
+        height:150px;
+      }
+      .dropbtn{
+        /* background:grey; */
+        padding:16px;
+        font-size:16px;
+        border:none;
+        cursor:pointer;
+        width:100%;
+        height:40%;
+      }
+      .dropdown{ 
+        position:relative;
+        display:contents;
+      }
+      .dropdown-content{
+        display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+      }
+      .dropdown-content > p{
+        color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+      }
+      .show {display:block;}
+      } 
+    </style>
+	<body>
+        <div id="heading">
+            <div id="logo">
+             <img id="brand" src="https://www.bluefly.com/cdn/shop/files/BLUEFLY-LOGO-11-20.png?v=1613183141",alt=""/>
+            </div>
+            <div id="header">
+                <button>
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAADCCAMAAACYEEwlAAAAeFBMVEX///8AAAD8/Pzp6en5+fnu7u719fVycnL6+vrr6+tRUVHm5uZdXV3V1dWDg4OqqqpoaGhYWFje3t6WlpbKysqdnZ0QEBCmpqYqKirHx8cXFxeOjo5+fn5ubm4cHBy+vr42NjZKSkomJiYyMjI8PDxBQUG1tbUpKSkCiA3hAAAEtElEQVR4nO3ca3eiMBAGYLmLXEWQIihaL/3//3DZlkEQraTnADK+z8ddc04yhDCZQGczAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHhCLozdhxHplhPmXrRaRV4eOoo6dn+GZyZRtjxKZL233TjUx+7VoIJ08SG1HO3YGrtnQ1ETux2A0sYI3mGF0MPHIfiWOezD4Li732MgSfuVMnYv++Wdn4Xgv4Uzdj97NHe7hKDw5Y3d1d4EN6vB7rz0szRNXcNfnG7C4Gpj97YfzrI+yvUyvQRz+j/did1DIwqGOWZf+xI0loMsv00J5sGlMVO2DOeCWb/QvnM3SdbzeqAydgmktbiO7pA//Jkc72vrArPthF57LmS/5sZO7Z5g9ozwNtWCGD25vkpWBeGTVb5gfdG4Nt782Y9rs2YxROeG4l9j0OXn1yhEffdsOHk1qLhbgy39/sTmhtCqLMno2EKpWqRP756JuNCquOhcM0mOzKaCSSvC7nF+cEte0VRY8aguJOs/TG2TbogvFhU3NS2Hsxea2ReaCpe+OjYkjRLhrqviD5WaLXvq16AcuqShWLuI2nHYR1HmcxRsZ1IQui+nr4umdSrYTqWHittLt4ZFF1T4ge+VDe0+ejUs5c+3dlg2PE+/xET7hoVwhSQob6Tj9JPGuAxCJpz5WWW+9Jn00a9BUaoknv5qRpltTz9doidkx010DRVXutUgXhoVy8QvJ+Xbaz5BEB+J6rIJAt0O4oUyvYzfZvprAhUGUvGFsUwZBcoQr4ryPkP8EVme13wI7rxeEOV9J+FkyfksWwZ99GtQOqXNwslvUjY8MDiNoyAI5320mvh99GpgdBK7FWyn0wk1hwMY2jxIgicIVUVq+vunYpGnwQjmPOXOQdr0061h6VQ8t4UqChad2GR9dWxQdD+I7QZp9ym+oL4kh6qMtsA5SkjncEsOxebrRkikpqBV59LT3zj8SOiN9s41Ijmmo7vuZ7gvTqaFXjp1nNthmTFLa/FazKuy6LpKfqcUWKMYSMvpV5orVcIkGR1GZVXv+K45JEpEv76XZzy9yZ3rK48frN7tda4vcNtPdsb5QZIEQjYlXrUsSOdfK0VR86MQXu95r2oj2z760ElNDtINkQzr5cn1Dz52q+DOY0IPs/VtDIoHBKe5oGb1oZ3cS/MSq4GX3f88astpLmjNj392ByNKFFWWZVW38pV9vjMLyihw+jBMjtqXevdxPH4+HH7J5xSFWdjpY7g2m9O6MAvczfMhnxatf2J1RxQPwfYIbxiOcicKnFbH4kF4Od4ZeeUQqtf3M2p4rQuz2fzi7+8Mv9gvnY3yyE3Ztv5zyWsuFM8JZ7W9/Rx0czDi67bCakeBVe74Q3PyyF3uN8Xjcb072WmcBI2Ki9L+uN7nF4ViPqiaZlpBoJia3s6iFf7rQgfanXWBVb7QyZ11gcMrvoIUvxUFRjXHrrRW1jT9l7jEabdzgcfJpCDTaAbhDReFgtKMwjveDgWtkTXxOJ4VZ9bWBdHPZ/gwq+qk8a4ToaBF37utQ/SGWUJNkEdx/hZ/lu1Xb/2nKwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa/gFDYi+cMLfJlAAAAABJRU5ErkJggg=="/>
+                </button>
+                <button>
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYfAWbelVtedtn8mYCajf5bYv6PJgyMxOR2g&usqp=CAU"/>
+                </button>
+                <button>
+                  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8NDQ0ODQ0NDggODQ0IBw8PDQ8NDQ0NFhEiFhYdHxQZHCsgJB4nGxMfITEhMSk3MS4vFx8/ODMtQygtOjcBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAN0A5AMBIgACEQEDEQH/xAAbAAEBAQEBAQEBAAAAAAAAAAAAAQUEAwIHBv/EADIQAQACAQMCBAQFAgcAAAAAAAABAgMEBRESITFBUXETMmGBBiIzQrFS0RQjJGKRocH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A/cQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATkFE5OQUTk5BQAAAAAAAAAAAAAAAAAAAAAElXNr9RGHFkyz8uOlss/XiAcW47ral4wafH8bXzEZJrz048VP6r28o+njLyjbtZk75dfalu89OnxUrSI97cy9fw9o5phjJk76vP8A6vV28Zm9u8R7RHaGrEAxLY9dp+9MtdZij58d6VxZ5jz4vHaZ+kw6dPu+G+ntn6+nFTmNR1x02xWjxravlP0aVo5Ymr2CmXV0zzaYw9r63Dx+TUZa/p2n61/t6QD5xZtZq46sXGj0k98Vr069Tkr69M9q/fmX3O16qvM49xzTk45rGTFivj59oiP5bNa8KDF0+6ZMWWuDWUrjveejRZqTM6fPPp371t/tnx8p7NmsuTc9DTUYr4snPTevFZjtat471tE+sTHMT9Hj+HdXbNpqTlnnU0m+k1c+uXHbotP345+4NMAAAAAAAAAAAAAAAAAAABl/iOs20WqiPm+Dfj+Wo+MtItExMc1mJrb2kHnoskWxY7R8tsdLV9pq92H+Hsk4ovo8k/52mnpw9/1NPM80mPbw+zbrIKAACSCSxvwtHOPU3/Zk12ryY/Saxbp/msvbftfOHFFcUdWuzz/htvp/Vknz9qx3mXTtWijTYMWGs81x0jHM+dp85+88z9wdgAAAAAAAAAAAAAAAAAAACTCgMreNtnL0ZcNox6/DzbS3n5bR51tHnWV2ndIzxat6zi1uLiuswWn81J8pj1rPlbzadoZm77VGfoyY7zh1+Lvo89Y5mvrE1/dSfCa/xPANOJVjbRu05L30+oxxh3PFWLZ8cTzTJj54jJjmfGk/81ntLW6/cH1MuHddyppqRa3VbLe3wtJipxOXNknwisf98+ER3l57xucaeKxWk5dZkno0WGs/my29/KseM28IeW17Xat51GqtGXcrV6LWj9PDSe/RSPKvrPjbjuD52rb8k5J1Wq6Z3C1Zx4q1/NTS4p/ZWfr4zbz7fRsxCVjh9AAAAAAAAAAAAAAAAAAAAAAAJMKAzd32uuprWYtOLWYrfG2/PWI+Jhyf+1mO018JhwY9+6MOT49ONxw2rg1GCnecuW3yzTnxrbyny78+D+gmHHm2zDfPj1FsdZ1eKtseC/HesW8Qcuz7dak21GomL7lliPjW/Zip5Ur9I8/WWtEERwoAAAAAAAAAAAAAigAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAKAAAAAAAAAAAAAAAAAAIAoAAAAAAAAgCgAAAAAAAAAAAAAAgKAAAAAAAACSCgACAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA//Z"/>
+                </button>
+                <button>
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCX6qeouXBT8U9fwdgeMv_jDKF1ALKSlpTxg&usqp=CAU",alt=""/>
+                </button>
+            </div>
+            
+        </div>
+        <div id="content">
+            <div>CLOTHING</div>
+            <div>SHOES</div>
+            <div>HANDBAGS</div>
+            <div>DISIGNERS</div>
+            <div>SUNGLASSES</div>
+            <div>JEWELLERY & WATCHES</div>
+            <div>ACCESSORIES</div>
+            <div>UNDER $50</div>
+            <div>CLEARANCE</div>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        </div>
+        <button class="openbtn" onclick="openNav()">&#9776</button>
+        <div id="intro">
+          <div>
+            <p id="welcome">WELCOME TO BLUE FLY: luxury brands at discounted prices<p>
+          </div>
+        
+        <div class="main">
+            <button id="prev"><</button>
+            <img id="mainpic" src="",alt="";/>
+             <div id="centered"><h1 id="slidetext"></h1><p id="tag"></p><button id="shop"></button>              
+             </div>
+        <button id="next">></button>
+        </div>
+        </div>
+        <h2 style="text-align: center;">RECOMMENDED PRODUCTS</h2>
+        <div class="recommends">
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/products/054f00a2-012c-4c60-9910-cd8d2b6d87ab_1800x1800.jpg?v=1626255128"/>
+          <h3>YAMBORGINI BLACK FOIL PRINT HOODIE</h3>
+          <div>
+            <p>$105.00</p><p style="color:red">SAVE 25%</p>
+          </div>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/2101752_1800x1800.jpg?v=1689775455"/>
+            <h3>SP5DER PINK SPIDER ATLANTA HOODIE</h3>
+          <div>
+            <p>$200.00</p>
+          </div>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/products/2038090_5fff2c4b-d5ea-46b7-954e-3121fed445f5_1800x1800.jpg?v=1679948512"/>
+            <h3>PALM ANGELS LIME YELLOW BEAR SWEATER</h3>
+          <div>
+            <p>$117.00</p><p style="color:red">SAVE 19%</p>
+          </div>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/products/1939975_1800x1800.jpg?v=1679943474"/>
+            <h3>VLONE ARTIST MERCH WHITE PULLOVER HOODIE</h3>
+          <div>
+            <p>$195.00</p><p style="color:red">SAVE 5%</p>
+          </div>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/products/104414819_1800x1800.jpg?v=1678217848"/>
+            <h3>OFF WHITE FELPA</h3>
+          <div>
+            <p>$1441.00</p><p style="color:red">SAVE 44%</p>
+          </div>
+          </div>
+        </div>
+        <div id="offs">
+            <div class="trends">
+              <img src="https://www.bluefly.com/cdn/shop/files/Fall_Mini_Shoot_8.3.22-0334_540x.jpg?v=1693412134"/>
+              <div>
+                <h2>TRENDING LUXURY STYLES</h2>
+                <h1>UP TO 80% OFF</h1>
+                <h2>Features Designer: Saint Laurent, Gucci, Bottega Venata, Balmain & more</h2>
+                <button>SHOP LUXURY STYLES</button>
+              </div>
+            </div>
+            <div class="trends">
+              <img src="https://www.bluefly.com/cdn/shop/files/WEB_ASSET_2_540x.jpg?v=1650894933"/>
+            <div>
+              <h2>DESIGNER BOTIQUE</h2>
+              <h1>UP TO 84% OFF</h1>
+              <h2>Best-Selling Styles from:Gucci, Valentina, Balenciaga, Stuart Weitzman & More</h2>
+              <button>SHOP DESIGNER BOTIQUE</button>
+            </div>
+            </div>
+            <div class="trends">
+              <img src="https://www.bluefly.com/cdn/shop/files/VENDOR_ASSET_-Extra_15_Off_Select_Luxe_Staples_540x.png?v=1671459534"/>
+            <div>
+              <h2>ON TREND DRESSES</h2>
+              <h1>UP TO 85% OFF</h1>
+              <h2>Best Selling Styles</h2>
+              <button>SHOP DRESSES</button>
+            </div>
+            </div>
+        </div>
+        <hr>
+        <h1 style="text-align: center;">SHOP BY CATEGORY</h1>
+        <div class="category">
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/1452673321_RLLZ_1_1800x1800.jpg?v=1699411813"/>
+            <h2>DRESSES</h2>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/1313689707_RLLZ_2_360x.jpg?v=1698511951"/>
+            <h2>PUMP & HEELS</h2>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/SefcNR5ad5EOhVrBMG6BfAUiHxni9F9r-25_360x.jpg?v=1699422289"/>
+            <h2>HANDBAGS</h2>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/GG0252S-30002481-001__70051__1_360x.jpg?v=1698284604"/>
+            <h2>SUNGLASSES</h2>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/1313141070_RLLZ_1_360x.jpg?v=1699101370"/>
+            <h2>WOMEN'S SNEAKERS</h2>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/1312712030_RLLZ_1_360x.jpg?v=1699130563"/>
+            <h2>MEN'S SNEAKERS</h2>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/AA119S22-JER00-81001__00008__1_360x.jpg?v=1698888870"/>
+            <h2>MEN'S T-SHIRTS</h2>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/607688-vkij0-3288__1_360x.jpg?v=1699292524"/>
+            <h2>WOMEN'S TOP</h2>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/1411671974_RLLZ_1_360x.jpg?v=1698457699"/>
+            <h2>WOMEN'S DENIM</h2>
+          </div>
+          <div>
+            <img src="https://www.bluefly.com/cdn/shop/files/6020161882_RLLZ_1_360x.jpg?v=1699221348"/>
+            <h2>JEWELLERY</h2>
+          </div>
+        </div>
+        <hr>
+      <div id="view">
+        <h1 style="text-align: center;">NEW ARRIVALS</h1>
+
+        <button>VIEW ALL</button>
+      </div>
+      <div class="recommends">
+        <div>
+          <img src="https://www.bluefly.com/cdn/shop/files/1312830886_RLLZ_1_360x.jpg?v=1699297307"/>
+          <h3>GOLDEN GOOSE FRANCY SUEDE SNEAKER</h3>
+          <div><p>$479.99</p><p style="color:red">SAVE19%</p></div>
+        </div>
+        <div>
+          <img src="https://www.bluefly.com/cdn/shop/files/1161777439_RLLZ_1_360x.jpg?v=1699296838"/>
+          <h3>FENDI SUNSHINE MEDIUM LEATHER TOTE</h3>
+          <div><p>$2,499.99</p><p style="color:red">SAVE 19%</p>
+          </div>
+        </div>
+        <div>
+          <img src="https://www.bluefly.com/cdn/shop/files/1313652731_RLLZ_1_360x.jpg?v=1699296730"/>
+          <h3>VALENTINO ICONOGRAPHE CANVAS & LEATHER SNEAKER</h3>
+          <div><p>$679.99</p><p style="color:red">SAVE 20%</p></div>
+        </div>
+        <div>
+          <img src="https://www.bluefly.com/cdn/shop/files/1411896873_RLLZ_1_360x.jpg?v=1699296086"/>
+          <h3>CAROLINA HERRERA BALLOON SLEEVE SILK TOP</h3>
+          <div><p>$499.99</p><p style="color:red">SAVE 54%</p></div>
+        </div>
+        <div>
+          <img src="https://www.bluefly.com/cdn/shop/files/1111346440_RLLZ_1_360x.jpg?v=1699297104"/>
+          <h3>GUCCI ORIGINAL GG CANVAS & LEATHER WALLET</h3>
+          <div><p>$429.99</p><p style="color:red">SAVE 18%</p></div>
+        </div>
+      </div><hr>
+      <div class="viewall">
+        <div>
+          <img src="https://www.bluefly.com/cdn/shop/files/denim_540x.jpg?v=1615204984"/>
+        <h2>UP TO 85% OFF THE DENIM SHOP FOR HIM & HER</h2>
+        <p>From Hudson Jeans, Joe's Jeans, J Brand & More</p>
+        <button>SHOP DENIM</button>
+        </div>
+        <div>
+          <img src="https://www.bluefly.com/cdn/shop/files/shutterstock_1112754335-REV_360x.jpg?v=1656342184"/>
+          <h2>UP TO 90% OFF TRENDING JUMPSUITS & ROMPERS</h2>
+          <p>Must-Haves From Halston, BCBGMAXAZRIA, Iro & More</p>
+          <button>SHOP JUMPSUITS</button>
+        </div>
+        <div>
+          <img src="https://www.bluefly.com/cdn/shop/files/Tops_360x.jpg?v=1615206654"/>
+          <h2>UP TO 90% OFF WOMEN'S MUST-HAVE ACCESSORIES</h2>
+          <p>Shop Wallets, Belts, Hats, Sunglasses & More</p>
+          <button>SHOP WOMEN'S ACCESSORIES</button>
+        </div>
+      </div>
+      <div class="footer">
+        <div id="details">
+          <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">ABOUT US</button>
+            <div id="mydropdown" class="dropdown-content"><p>Contact Us</p>
+            <p>Frequently Asked Questions</p>
+            <p>Shipping & Returns</p>
+            <p>Pre Owned Guide</p>
+            <p>Sell on Bluefly</p>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Privacy Policy</button>
+            <div id="mydropdown" class="dropdown-content">
+              <p>Terms & Conditions</p>
+            <p>Do not sell my personal information</p>
+            <p>Shop Pay installments</p>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">SIGNUP AND SAVE</button>
+            <div id="mydropdown" class="dropdown-content">
+              <p>Subscribe to get exclusive offers on design brands</p>
+            <input placeholder="Enter your email"><br>
+            <button>Subscribe</button>
+            </div>
+          </div>
+        </div>
+        <img id="brand" src="https://www.bluefly.com/cdn/shop/files/Untitled_2_.png_5_x104@2x.png?v=1620852820"/>
+ 
+        <p style="text-align: center;" >2023 Bluefly BLUEFLY.COM OR ITS AFFILLIATES ALL RIGHTS RESERVED</p>      
+      </div>
+    </body>
+</html>
+<script>
+  function openNav(){
+    document.getElementById("content").style.width="250px";
+  }
+  function closeNav(){
+    document.getElementById("content").style.width="0";
+  }
+   
+    let prev=document.getElementById("prev");
+    let next=document.getElementById("next");
+    let textarray=["LUXE HANDBAGS","PRADA","FENDI","BOTTEGA VENETA","WORLD OF VALENTINO","OFF WHITE","DESIGNER SHOES","GUCCI"];
+    let tagarray=["Styles From:Gucci, Prada, saint laurent, bottega veneta, fendi & more","An Italian Fashion House Made With Classic & Eccentric Style","Fashion Brand That Cultivates The Most Elevated Design Of Style",
+    "Unsurpassed Craftmanship & The Signature Woven Leather","Shop Handbags, Shoes, Apparel, Accessories & More","Fashion Brand That Cultivates The Most Elevated Design Of Style",
+    "Step Into The New Season With New Designer Shoes","The Iconic Brand Represented With Great Design & Contemporary Lifestyle"];
+    let buttonarray=["SHOP NOW","SHOP PRADA","SHOP NOW","SHOP NOW","SHOP VALENTINO","SHOP NOW","SHOP NOW","SHOP GUCCI"];
+        let imagearray=[
+        "https://www.bluefly.com/cdn/shop/files/shutterstock_390723769_4_7_1944x.jpg?v=1660348351",
+        "https://www.bluefly.com/cdn/shop/files/shutterstock_324325775_1_1944x.jpg?v=1660337720",
+        "https://www.bluefly.com/cdn/shop/files/shutterstock_1464509732_1_1944x.jpg?v=1660342703",
+        "https://www.bluefly.com/cdn/shop/files/shutterstock_2056290722_1944x.jpg?v=1660337209",
+        "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSNagfCzNhAbyAm0v5REpUSIfYSxcT0Tuh__tp9MeP7febFFDKj",
+        "https://www.bluefly.com/cdn/shop/files/pietro-schellino-RMMmKR8RCoo-unsplash_1512x.jpg?v=1687447308",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVMBb0iVXT9ncqupB-xHAn2PyQYwhYAzdQc1YmXmRGjyjEM4RV",
+        "https://www.bluefly.com/cdn/shop/files/shutterstock_1207523875_1944x.jpg?v=1660338294"];
+        let image=document.getElementById("mainpic");
+        
+        let text=document.getElementById("slidetext");
+        let tag=document.getElementById("tag");
+        let shop=document.getElementById("shop");
+        let currenttext=0;let currenttag=0;
+        let currentimage=0;let currentshop=0;
+        image.setAttribute('src',imagearray[currentimage]);
+        text.innerText=textarray[currenttext];
+        tag.innerText=tagarray[currenttag];
+        shop.innerText=buttonarray[currentshop];
+        prev.addEventListener('click',function(){
+            currentimage--;currenttag--;
+            currenttext--;currentshop--;
+            if(currentimage < 0)
+            {
+                currentimage = imagearray.length-1;
+                currenttext = textarray.length-1;
+                currenttag = tagarray.length-1;
+                currentshop = buttonarray.length-1;
+            }
+            image.setAttribute('src',imagearray[currentimage]);
+            text.innerText=textarray[currenttext];
+            tag.innerText=tagarray[currenttag];
+            shop.innerText=buttonarray[currentshop];
+           
+        })
+        next.addEventListener('click',function(){
+            currentimage++;currenttag++;
+            currenttext++;currentshop++;
+            if(currentimage >= imagearray.length)
+            {
+                currentimage = 0;
+                currenttext = 0;
+                currenttag = 0;
+                currentshop = 0;
+            }
+            image.setAttribute('src',imagearray[currentimage]); 
+            text.innerText=textarray[currenttext];
+            tag.innerText=tagarray[currenttag];
+            shop.innerText=buttonarray[currentshop];
+            
+        })
+        function myFunction() {
+  document.getElementById("mydropdown").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+</script>
